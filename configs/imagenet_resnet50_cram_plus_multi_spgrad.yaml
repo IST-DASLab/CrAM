@@ -1,0 +1,17 @@
+training:
+  optimizer:
+    class: SGD
+    lr: 0.2
+    momentum: 0.9
+    weight_decay: 0.0001
+
+  SAM:
+    class: TopkCrAM
+    sparsities: [0.5, 0.7, 0.9]
+    plus_version: True
+    sparse_grad: True
+
+  lr_scheduler:
+    class: CosineLR
+    warmup_length: 5
+    end_epoch: 100
