@@ -33,9 +33,9 @@ if __name__ == '__main__':
         DEV = torch.device('cuda:0')
         torch.cuda.manual_seed(args.seed)
     else:
-         DEV = torch.device('cpu')
+        DEV = torch.device('cpu')
 
-    # args.use_calib should be True (otherwise it uses the entire training set for BNT calibration_
+    # args.use_calib should be True (otherwise it uses the entire training set for BNT calibration
     if args.use_calib:
         if args.fixed_calib:
             # use fixed calibration set for BNT (only for ImageNet)
@@ -50,7 +50,7 @@ if __name__ == '__main__':
             np.random.shuffle(idxs)
             data_train = torch.utils.data.Subset(data_train, idxs[:args.calib_size])
     else:
-        data_train, data_test, _ = get_datasets('imagenet', 'IMAGENET_PATH', use_val_split=False)
+        data_train, data_test = get_datasets('imagenet', 'IMAGENET_PATH', use_val_split=False)
     print('train', data_train)
     print('test', data_test)
     train_loader = DataLoader(data_train, batch_size=128, shuffle=True, pin_memory=True, num_workers=8)
